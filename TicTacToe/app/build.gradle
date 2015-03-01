@@ -5,7 +5,7 @@ android {
     buildToolsVersion "21.1.2"
 
     defaultConfig {
-        applicationId "com.example.qianmai.project2_tictactoe"
+        applicationId "com.example.qianmai.tictactoe"
         minSdkVersion 9
         targetSdkVersion 21
         versionCode 1
