@@ -173,10 +173,13 @@ public class Project2_TicTacToeActivity extends Activity {
         mGame.setMove(player, location);
         mBoardButtons[location].setEnabled(false);
         mBoardButtons[location].setText(String.valueOf(player));
-        if (player == mGame.HUMAN_PLAYER)
-            mBoardButtons[location].setTextColor(Color.GREEN);
-        else
+        if (player == mGame.HUMAN_PLAYER) {
             mBoardButtons[location].setTextColor(Color.RED);
+//            mBoardButtons[location].setBackgroundColor(Color.GREEN);
+        } else {
+            mBoardButtons[location].setTextColor(Color.BLUE);
+//            mBoardButtons[location].setBackgroundColor(Color.WHITE);
+        }
     }
 }
 
