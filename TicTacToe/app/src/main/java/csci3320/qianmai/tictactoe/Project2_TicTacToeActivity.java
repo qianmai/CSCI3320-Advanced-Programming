@@ -29,8 +29,7 @@ public class Project2_TicTacToeActivity extends Activity {
     private boolean mHumanFirst = true;
     private boolean mGameOver = false;
 
-    /** Called when the activity is first created. */
-    @Override
+    //Interface initialization
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -60,7 +59,7 @@ public class Project2_TicTacToeActivity extends Activity {
         startNewGame();
     }
 
-    @Override
+    //Create menu options
     public boolean onCreateOptionsMenu(Menu menu)
     {
         MenuInflater inflater = getMenuInflater();
@@ -69,7 +68,7 @@ public class Project2_TicTacToeActivity extends Activity {
         return true;
     }
 
-    @Override
+    //Define menu options details
     public boolean onOptionsItemSelected(MenuItem item)
     {
         switch(item.getItemId())
@@ -133,6 +132,7 @@ public class Project2_TicTacToeActivity extends Activity {
 
                     int winner = mGame.checkForWinner();
 
+                    //If the game is not finished yet, get player's next movement
                     if (winner == 0)
                     {
                         mInfoTextView.setText(R.string.turn_computer);
@@ -141,8 +141,11 @@ public class Project2_TicTacToeActivity extends Activity {
                         winner = mGame.checkForWinner();
                     }
 
-                    if (winner == 0)
+                    //If the game is not finished yet, switch player
+                    if (winner == 0) {
                         mInfoTextView.setText(R.string.turn_human);
+                    }
+                    //If the game is tie
                     else if (winner == 1)
                     {
                         mInfoTextView.setText(R.string.result_tie);
@@ -150,6 +153,7 @@ public class Project2_TicTacToeActivity extends Activity {
                         mTieCount.setText(Integer.toString(mTieCounter));
                         mGameOver = true;
                     }
+                    //If human wins, update human score
                     else if (winner == 2)
                     {
                         mInfoTextView.setText(R.string.result_human_wins);
@@ -157,6 +161,7 @@ public class Project2_TicTacToeActivity extends Activity {
                         mHumanCount.setText(Integer.toString(mHumanCounter));
                         mGameOver = true;
                     }
+                    //If computer wins, update computer score
                     else
                     {
                         mInfoTextView.setText(R.string.result_android_wins);
@@ -169,7 +174,7 @@ public class Project2_TicTacToeActivity extends Activity {
         }
     }
 
-    //Update button status
+    //Set movement and update button status
     private void setMove(char player, int location)
     {
         mGame.setMove(player, location);

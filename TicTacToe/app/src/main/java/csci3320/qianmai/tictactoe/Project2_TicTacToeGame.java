@@ -111,7 +111,7 @@ public class Project2_TicTacToeGame {
             if (mBoard[i] == HUMAN_PLAYER &&
                     mBoard[i+1] == HUMAN_PLAYER &&
                     mBoard[i+2] == HUMAN_PLAYER)
-                //If player wins return 2
+                //If human wins return 2
                 return 2;
             if (mBoard[i] == ANDROID_PLAYER &&
                     mBoard[i+1] == ANDROID_PLAYER &&
