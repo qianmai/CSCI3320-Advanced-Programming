@@ -18,12 +18,12 @@ public class Project2_TicTacToeActivity extends Activity {
     private Button mBoardButtons[];
 
     private TextView mInfoTextView;
-    private TextView mHumanCount;
-    private TextView mTieCount;
-    private TextView mAndroidCount;
+    private TextView humanWinCountText;
+    private TextView tieGamesCountText;
+    private TextView computerWinCountText;
 
     private int humanWinCount = 0;
-    private int mTieCounter = 0;
+    private int tieGamesCount = 0;
     private int computerWinCount = 0;
 
     private boolean mHumanFirst = true;
@@ -46,13 +46,13 @@ public class Project2_TicTacToeActivity extends Activity {
         mBoardButtons[8] = (Button) findViewById(R.id.nine);
 
         mInfoTextView = (TextView) findViewById(R.id.information);
-        mHumanCount = (TextView) findViewById(R.id.humanCount);
-        mTieCount = (TextView) findViewById(R.id.tiesCount);
-        mAndroidCount = (TextView) findViewById(R.id.androidCount);
+        humanWinCountText = (TextView) findViewById(R.id.humanCount);
+        tieGamesCountText = (TextView) findViewById(R.id.tiesCount);
+        computerWinCountText = (TextView) findViewById(R.id.androidCount);
 
-        mHumanCount.setText(Integer.toString(humanWinCount));
-        mTieCount.setText(Integer.toString(mTieCounter));
-        mAndroidCount.setText(Integer.toString(computerWinCount));
+        humanWinCountText.setText(Integer.toString(humanWinCount));
+        tieGamesCountText.setText(Integer.toString(tieGamesCount));
+        computerWinCountText.setText(Integer.toString(computerWinCount));
 
         mGame = new Project2_TicTacToeGame();
 
@@ -149,8 +149,8 @@ public class Project2_TicTacToeActivity extends Activity {
                     else if (winner == 1)
                     {
                         mInfoTextView.setText(R.string.result_tie);
-                        mTieCounter++;
-                        mTieCount.setText(Integer.toString(mTieCounter));
+                        tieGamesCount++;
+                        tieGamesCountText.setText(Integer.toString(tieGamesCount));
                         mGameOver = true;
                     }
                     //If human wins, update human score
@@ -158,7 +158,7 @@ public class Project2_TicTacToeActivity extends Activity {
                     {
                         mInfoTextView.setText(R.string.result_human_wins);
                         humanWinCount++;
-                        mHumanCount.setText(Integer.toString(humanWinCount));
+                        humanWinCountText.setText(Integer.toString(humanWinCount));
                         mGameOver = true;
                     }
                     //If computer wins, update computer score
@@ -166,7 +166,7 @@ public class Project2_TicTacToeActivity extends Activity {
                     {
                         mInfoTextView.setText(R.string.result_android_wins);
                         computerWinCount++;
-                        mAndroidCount.setText(Integer.toString(computerWinCount));
+                        computerWinCountText.setText(Integer.toString(computerWinCount));
                         mGameOver = true;
                     }
                 }

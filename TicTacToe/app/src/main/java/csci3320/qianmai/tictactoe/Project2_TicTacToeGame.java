@@ -9,7 +9,7 @@ import java.util.Random;
 public class Project2_TicTacToeGame {
 
     private char mBoard[];
-    private final static int BOARD_SIZE = 9;
+    private final static int boardButtonNum = 9;
 
     public static final char humanChar = 'O';
     public static final char computerChar = 'X';
@@ -19,15 +19,15 @@ public class Project2_TicTacToeGame {
 
     //Get board size for random number for computer movement
     public static int getBOARD_SIZE() {
-        return BOARD_SIZE;
+        return boardButtonNum;
     }
 
     //Create new game structure
     public Project2_TicTacToeGame(){
 
-        mBoard = new char[BOARD_SIZE];
+        mBoard = new char[boardButtonNum];
 
-        for (int i = 0; i < BOARD_SIZE; i++)
+        for (int i = 0; i < boardButtonNum; i++)
             mBoard[i] = blankChar;
 
         mRand = new Random();
@@ -36,7 +36,7 @@ public class Project2_TicTacToeGame {
     //Clear all buttons on board
     public void clearBoard()
     {
-        for (int i = 0; i < BOARD_SIZE; i++)
+        for (int i = 0; i < boardButtonNum; i++)
         {
             mBoard[i] = blankChar;
         }
