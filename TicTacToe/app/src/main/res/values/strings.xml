@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Project2_TicTacToe</string>
-    <string name="first_human">You go first.</string>
+    <string name="first_human">You first.</string>
     <string name="turn_human">Your turn.</string>
-    <string name="turn_computer">Android\'s turn.</string>
-    <string name="result_tie">It\'s a tie!</string>
-    <string name="result_human_wins">You Won!</string>
-    <string name="result_android_wins">Android Won!</string>
+    <string name="turn_computer">Computer\'s turn.</string>
+    <string name="result_tie">Tie</string>
+    <string name="result_human_wins">You Win!</string>
+    <string name="result_android_wins">Computer Wins!</string>
     <string name="one">1</string>
     <string name="two">2</string>
     <string name="three">3</string>
@@ -17,23 +17,19 @@
     <string name="eight">8</string>
     <string name="nine">9</string>
     <string name="info">Info</string>
-    <string name="human">Human: </string>
+    <string name="human">You: </string>
     <string name="ties">Ties: </string>
-    <string name="android">Android: </string>
+    <string name="android">Computer: </string>
     <string name="contact_heading">Contact Info</string>
-  <string name="contact_info">  
-    <b>Name:</b> Indie Development\n  
-    <b>Email:</b> my email here\n  
-    <b>Phone:</b> my phone here\n  
-    <b>Website:</b> website here  
+  <string name="contact_info">
   </string>
-    <string name="about_heading">About</string>
-  <string name="about_info">This app allows you to play a game  
-    of tic tac toe against the computer. The rounds  
-    will rotate who gets to play first. Also, the app  
-    will keep track and display the result of the games  
-    at the bottom of the screen.  
+  <string name="game_rule">Game Rule</string>
+  <string name="rule_info">This is Project2 TicTacToe Game.
+      Two players take turns pressing buttons in a 3x3 grid to
+      make "X" or "O" characters on them respectively.
+      If any player can place three of their letter in a row horizontally,
+      vertically, or diagonally, that player wins the game.
   </string>
     <string name="newGame_label">New Game</string>
-    <string name="exitGame_label">Exit Game</string>
+    <string name="exitGame_label">Quit</string>
 </resources>  

@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-
+//Create Project2_TicTacToeActivity under the Activity
 public class Project2_TicTacToeActivity extends Activity {
 
     private Project2_TicTacToeGame mGame;
@@ -58,7 +58,6 @@ public class Project2_TicTacToeActivity extends Activity {
         mGame = new Project2_TicTacToeGame();
 
         startNewGame();
-
     }
 
     @Override
@@ -86,6 +85,7 @@ public class Project2_TicTacToeActivity extends Activity {
         return true;
     }
 
+    //Start new game method but still keep the game record
     private void startNewGame()
     {
         mGame.clearBoard();
@@ -113,6 +113,7 @@ public class Project2_TicTacToeActivity extends Activity {
         mGameOver = false;
     }
 
+    //Button click handler
     private class ButtonClickListener implements View.OnClickListener
     {
         int location;
@@ -168,6 +169,7 @@ public class Project2_TicTacToeActivity extends Activity {
         }
     }
 
+    //Update button status
     private void setMove(char player, int location)
     {
         mGame.setMove(player, location);
