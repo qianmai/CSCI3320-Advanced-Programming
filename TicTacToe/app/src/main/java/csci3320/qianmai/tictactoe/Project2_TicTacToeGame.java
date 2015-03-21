@@ -11,9 +11,9 @@ public class Project2_TicTacToeGame {
     private char mBoard[];
     private final static int BOARD_SIZE = 9;
 
-    public static final char HUMAN_PLAYER = 'X';
-    public static final char ANDROID_PLAYER = '0';
-    public static final char EMPTY_SPACE = ' ';
+    public static final char humanChar = 'O';
+    public static final char computerChar = 'X';
+    public static final char blankChar = ' ';
 
     private Random mRand;
 
@@ -28,7 +28,7 @@ public class Project2_TicTacToeGame {
         mBoard = new char[BOARD_SIZE];
 
         for (int i = 0; i < BOARD_SIZE; i++)
-            mBoard[i] = EMPTY_SPACE;
+            mBoard[i] = blankChar;
 
         mRand = new Random();
     }
@@ -38,7 +38,7 @@ public class Project2_TicTacToeGame {
     {
         for (int i = 0; i < BOARD_SIZE; i++)
         {
-            mBoard[i] = EMPTY_SPACE;
+            mBoard[i] = blankChar;
         }
     }
 
@@ -56,14 +56,14 @@ public class Project2_TicTacToeGame {
         for (int i = 0; i < getBOARD_SIZE(); i++)
         {
             //Check available button for movement
-            if (mBoard[i] != HUMAN_PLAYER && mBoard[i] != ANDROID_PLAYER)
+            if (mBoard[i] != humanChar && mBoard[i] != computerChar)
             {
                 char curr = mBoard[i];
-                mBoard[i] = ANDROID_PLAYER;
+                mBoard[i] = computerChar;
                 //Get next movement button index if computer can win for the next step
                 if (checkForWinner() == 3)
                 {
-                    setMove(ANDROID_PLAYER, i);
+                    setMove(computerChar, i);
                     return i;
                 }
                 else
@@ -74,15 +74,15 @@ public class Project2_TicTacToeGame {
         for (int i = 0; i < getBOARD_SIZE(); i++)
         {
             //Check available button for movement
-            if (mBoard[i] != HUMAN_PLAYER && mBoard[i] != ANDROID_PLAYER)
+            if (mBoard[i] != humanChar && mBoard[i] != computerChar)
             {
                 char curr = mBoard[i];
-                mBoard[i] = HUMAN_PLAYER;
+                mBoard[i] = humanChar;
                 //Get next movement button index to prevent player win
                 //if player can win in the next step
                 if (checkForWinner() == 2)
                 {
-                    setMove(ANDROID_PLAYER, i);
+                    setMove(computerChar, i);
                     return i;
                 }
                 else
@@ -95,10 +95,10 @@ public class Project2_TicTacToeGame {
         {
             //Set computer movement from board size
             move = mRand.nextInt(getBOARD_SIZE());
-        } while (mBoard[move] == HUMAN_PLAYER || mBoard[move] == ANDROID_PLAYER);
+        } while (mBoard[move] == humanChar || mBoard[move] == computerChar);
 
         //Get a random index for next movement button
-        setMove(ANDROID_PLAYER, move);
+        setMove(computerChar, move);
         return move;
     }
 
@@ -108,14 +108,14 @@ public class Project2_TicTacToeGame {
         //Check horizontal letters are the same or not
         for (int i = 0; i <= 6; i += 3)
         {
-            if (mBoard[i] == HUMAN_PLAYER &&
-                    mBoard[i+1] == HUMAN_PLAYER &&
-                    mBoard[i+2] == HUMAN_PLAYER)
+            if (mBoard[i] == humanChar &&
+                    mBoard[i+1] == humanChar &&
+                    mBoard[i+2] == humanChar)
                 //If human wins return 2
                 return 2;
-            if (mBoard[i] == ANDROID_PLAYER &&
-                    mBoard[i+1] == ANDROID_PLAYER &&
-                    mBoard[i+2] == ANDROID_PLAYER)
+            if (mBoard[i] == computerChar &&
+                    mBoard[i+1] == computerChar &&
+                    mBoard[i+2] == computerChar)
                 //If computer wins return 3
                 return 3;
         }
@@ -123,39 +123,40 @@ public class Project2_TicTacToeGame {
         //Check vertical letters are the same or not
         for (int i = 0; i <= 2; i++)
         {
-            if (mBoard[i] == HUMAN_PLAYER &&
-                    mBoard[i+3] == HUMAN_PLAYER &&
-                    mBoard[i+6] == HUMAN_PLAYER)
+            if (mBoard[i] == humanChar &&
+                    mBoard[i+3] == humanChar &&
+                    mBoard[i+6] == humanChar)
                 return 2;
-            if (mBoard[i] == ANDROID_PLAYER &&
-                    mBoard[i+3] == ANDROID_PLAYER &&
-                    mBoard[i+6] == ANDROID_PLAYER)
+            if (mBoard[i] == computerChar &&
+                    mBoard[i+3] == computerChar &&
+                    mBoard[i+6] == computerChar)
                 return 3;
         }
 
         //Check diagonal letters are the same or not
-        if ((   mBoard[0] == HUMAN_PLAYER &&
-                mBoard[4] == HUMAN_PLAYER &&
-                mBoard[8] == HUMAN_PLAYER)
+        if ((   mBoard[0] == humanChar &&
+                mBoard[4] == humanChar &&
+                mBoard[8] == humanChar)
                 ||
-                (mBoard[2] == HUMAN_PLAYER &&
-                 mBoard[4] == HUMAN_PLAYER &&
-                 mBoard[6] == HUMAN_PLAYER) )
+                (mBoard[2] == humanChar &&
+                 mBoard[4] == humanChar &&
+                 mBoard[6] == humanChar) )
             return 2;
-        if ((   mBoard[0] == ANDROID_PLAYER &&
-                mBoard[4] == ANDROID_PLAYER &&
-                mBoard[8] == ANDROID_PLAYER)
+        if ((   mBoard[0] == computerChar &&
+                mBoard[4] == computerChar &&
+                mBoard[8] == computerChar)
                 ||
-                (mBoard[2] == ANDROID_PLAYER &&
-                 mBoard[4] == ANDROID_PLAYER &&
-                 mBoard[6] == ANDROID_PLAYER) )
+                (mBoard[2] == computerChar &&
+                 mBoard[4] == computerChar &&
+                 mBoard[6] == computerChar) )
             return 3;
 
         //If no winner, check the game is finished or not, if not return 0
         for (int i = 0; i < getBOARD_SIZE(); i++)
         {
-            if (mBoard[i] != HUMAN_PLAYER && mBoard[i] != ANDROID_PLAYER)
+            if (mBoard[i] != humanChar && mBoard[i] != computerChar) {
                 return 0;
+            }
         }
 
         //If no winner and the game is finished, return 1 for tie

@@ -22,9 +22,9 @@ public class Project2_TicTacToeActivity extends Activity {
     private TextView mTieCount;
     private TextView mAndroidCount;
 
-    private int mHumanCounter = 0;
+    private int humanWinCount = 0;
     private int mTieCounter = 0;
-    private int mAndroidCounter = 0;
+    private int computerWinCount = 0;
 
     private boolean mHumanFirst = true;
     private boolean mGameOver = false;
@@ -50,9 +50,9 @@ public class Project2_TicTacToeActivity extends Activity {
         mTieCount = (TextView) findViewById(R.id.tiesCount);
         mAndroidCount = (TextView) findViewById(R.id.androidCount);
 
-        mHumanCount.setText(Integer.toString(mHumanCounter));
+        mHumanCount.setText(Integer.toString(humanWinCount));
         mTieCount.setText(Integer.toString(mTieCounter));
-        mAndroidCount.setText(Integer.toString(mAndroidCounter));
+        mAndroidCount.setText(Integer.toString(computerWinCount));
 
         mGame = new Project2_TicTacToeGame();
 
@@ -105,7 +105,7 @@ public class Project2_TicTacToeActivity extends Activity {
         {
             mInfoTextView.setText(R.string.turn_computer);
             int move = mGame.getComputerMove();
-            setMove(mGame.ANDROID_PLAYER, move);
+            setMove(mGame.computerChar, move);
             mHumanFirst = true;
         }
 
@@ -128,7 +128,7 @@ public class Project2_TicTacToeActivity extends Activity {
             {
                 if (mBoardButtons[location].isEnabled())
                 {
-                    setMove(mGame.HUMAN_PLAYER, location);
+                    setMove(mGame.humanChar, location);
 
                     int winner = mGame.checkForWinner();
 
@@ -137,7 +137,7 @@ public class Project2_TicTacToeActivity extends Activity {
                     {
                         mInfoTextView.setText(R.string.turn_computer);
                         int move = mGame.getComputerMove();
-                        setMove(mGame.ANDROID_PLAYER, move);
+                        setMove(mGame.computerChar, move);
                         winner = mGame.checkForWinner();
                     }
 
@@ -157,16 +157,16 @@ public class Project2_TicTacToeActivity extends Activity {
                     else if (winner == 2)
                     {
                         mInfoTextView.setText(R.string.result_human_wins);
-                        mHumanCounter++;
-                        mHumanCount.setText(Integer.toString(mHumanCounter));
+                        humanWinCount++;
+                        mHumanCount.setText(Integer.toString(humanWinCount));
                         mGameOver = true;
                     }
                     //If computer wins, update computer score
                     else
                     {
                         mInfoTextView.setText(R.string.result_android_wins);
-                        mAndroidCounter++;
-                        mAndroidCount.setText(Integer.toString(mAndroidCounter));
+                        computerWinCount++;
+                        mAndroidCount.setText(Integer.toString(computerWinCount));
                         mGameOver = true;
                     }
                 }
@@ -180,7 +180,7 @@ public class Project2_TicTacToeActivity extends Activity {
         mGame.setMove(player, location);
         mBoardButtons[location].setEnabled(false);
         mBoardButtons[location].setText(String.valueOf(player));
-        if (player == mGame.HUMAN_PLAYER) {
+        if (player == mGame.humanChar) {
             mBoardButtons[location].setTextColor(Color.RED);
 //            mBoardButtons[location].setBackgroundColor(Color.GREEN);
         } else {
