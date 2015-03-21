@@ -1,4 +1,4 @@
-package com.example.qianmai.tictactoe;
+package csci3320.qianmai.tictactoe;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
