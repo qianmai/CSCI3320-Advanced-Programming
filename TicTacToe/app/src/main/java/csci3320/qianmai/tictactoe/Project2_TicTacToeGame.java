@@ -17,11 +17,6 @@ public class Project2_TicTacToeGame {
 
     private Random mRand;
 
-    //Get board size for random number for computer movement
-    public static int getBOARD_SIZE() {
-        return boardButtonNum;
-    }
-
     //Create new game structure
     public Project2_TicTacToeGame(){
 
@@ -53,7 +48,7 @@ public class Project2_TicTacToeGame {
     {
         int move;
 
-        for (int i = 0; i < getBOARD_SIZE(); i++)
+        for (int i = 0; i < boardButtonNum; i++)
         {
             //Check available button for movement
             if (mBoard[i] != humanChar && mBoard[i] != computerChar)
@@ -71,7 +66,7 @@ public class Project2_TicTacToeGame {
             }
         }
 
-        for (int i = 0; i < getBOARD_SIZE(); i++)
+        for (int i = 0; i < boardButtonNum; i++)
         {
             //Check available button for movement
             if (mBoard[i] != humanChar && mBoard[i] != computerChar)
@@ -94,7 +89,7 @@ public class Project2_TicTacToeGame {
         do
         {
             //Set computer movement from board size
-            move = mRand.nextInt(getBOARD_SIZE());
+            move = mRand.nextInt(boardButtonNum);
         } while (mBoard[move] == humanChar || mBoard[move] == computerChar);
 
         //Get a random index for next movement button
@@ -152,7 +147,7 @@ public class Project2_TicTacToeGame {
             return 3;
 
         //If no winner, check the game is finished or not, if not return 0
-        for (int i = 0; i < getBOARD_SIZE(); i++)
+        for (int i = 0; i < boardButtonNum; i++)
         {
             if (mBoard[i] != humanChar && mBoard[i] != computerChar) {
                 return 0;

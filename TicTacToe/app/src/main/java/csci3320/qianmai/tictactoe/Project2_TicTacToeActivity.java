@@ -34,7 +34,7 @@ public class Project2_TicTacToeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mBoardButtons = new Button[mGame.getBOARD_SIZE()];
+        mBoardButtons = new Button[9];
         mBoardButtons[0] = (Button) findViewById(R.id.one);
         mBoardButtons[1] = (Button) findViewById(R.id.two);
         mBoardButtons[2] = (Button) findViewById(R.id.three);
