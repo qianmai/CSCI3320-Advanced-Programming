@@ -76,6 +76,9 @@ public class Project2_TicTacToeActivity extends Activity {
             case R.id.newGame:
                 startNewGame();
                 break;
+            case R.id.finalScore:
+                showFinalScore();
+                break;
             case R.id.exitGame:
                 Project2_TicTacToeActivity.this.finish();
                 break;
@@ -112,6 +115,11 @@ public class Project2_TicTacToeActivity extends Activity {
         isGameOver = false;
     }
 
+    //Show final score
+    private void showFinalScore()
+    {
+        
+    }
     //Button click handler
     private class ButtonClickListener implements View.OnClickListener
     {
