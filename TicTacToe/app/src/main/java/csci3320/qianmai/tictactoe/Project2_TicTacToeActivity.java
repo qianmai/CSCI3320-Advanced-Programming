@@ -181,11 +181,11 @@ public class Project2_TicTacToeActivity extends Activity {
         chessboard[location].setEnabled(false);
         chessboard[location].setText(String.valueOf(player));
         if (player == mGame.humanChar) {
-            chessboard[location].setTextColor(Color.RED);
-//            chessboard[location].setBackgroundColor(Color.GREEN);
+//            chessboard[location].setTextColor(Color.RED);
+            chessboard[location].setBackgroundResource(R.drawable.o);
         } else {
-            chessboard[location].setTextColor(Color.BLUE);
-//            chessboard[location].setBackgroundColor(Color.WHITE);
+//            chessboard[location].setTextColor(Color.BLUE);
+            chessboard[location].setBackgroundResource(R.drawable.x);
         }
     }
 }
