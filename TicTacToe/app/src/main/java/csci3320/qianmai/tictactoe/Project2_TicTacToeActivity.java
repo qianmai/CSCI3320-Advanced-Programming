@@ -15,7 +15,7 @@ public class Project2_TicTacToeActivity extends Activity {
 
     private Project2_TicTacToeGame mGame;
 
-    private Button mBoardButtons[];
+    private Button chessboard[];
 
     private TextView mInfoTextView;
     private TextView humanWinCountText;
@@ -34,16 +34,16 @@ public class Project2_TicTacToeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mBoardButtons = new Button[9];
-        mBoardButtons[0] = (Button) findViewById(R.id.one);
-        mBoardButtons[1] = (Button) findViewById(R.id.two);
-        mBoardButtons[2] = (Button) findViewById(R.id.three);
-        mBoardButtons[3] = (Button) findViewById(R.id.four);
-        mBoardButtons[4] = (Button) findViewById(R.id.five);
-        mBoardButtons[5] = (Button) findViewById(R.id.six);
-        mBoardButtons[6] = (Button) findViewById(R.id.seven);
-        mBoardButtons[7] = (Button) findViewById(R.id.eight);
-        mBoardButtons[8] = (Button) findViewById(R.id.nine);
+        chessboard = new Button[9];
+        chessboard[0] = (Button) findViewById(R.id.one);
+        chessboard[1] = (Button) findViewById(R.id.two);
+        chessboard[2] = (Button) findViewById(R.id.three);
+        chessboard[3] = (Button) findViewById(R.id.four);
+        chessboard[4] = (Button) findViewById(R.id.five);
+        chessboard[5] = (Button) findViewById(R.id.six);
+        chessboard[6] = (Button) findViewById(R.id.seven);
+        chessboard[7] = (Button) findViewById(R.id.eight);
+        chessboard[8] = (Button) findViewById(R.id.nine);
 
         mInfoTextView = (TextView) findViewById(R.id.information);
         humanWinCountText = (TextView) findViewById(R.id.humanCount);
@@ -89,11 +89,11 @@ public class Project2_TicTacToeActivity extends Activity {
     {
         mGame.clearBoard();
 
-        for (int i = 0; i < mBoardButtons.length; i++)
+        for (int i = 0; i < chessboard.length; i++)
         {
-            mBoardButtons[i].setText("");
-            mBoardButtons[i].setEnabled(true);
-            mBoardButtons[i].setOnClickListener(new ButtonClickListener(i));
+            chessboard[i].setText("");
+            chessboard[i].setEnabled(true);
+            chessboard[i].setOnClickListener(new ButtonClickListener(i));
         }
 
         if (mHumanFirst)
@@ -126,7 +126,7 @@ public class Project2_TicTacToeActivity extends Activity {
         {
             if (!mGameOver)
             {
-                if (mBoardButtons[location].isEnabled())
+                if (chessboard[location].isEnabled())
                 {
                     setMove(mGame.humanChar, location);
 
@@ -178,14 +178,14 @@ public class Project2_TicTacToeActivity extends Activity {
     private void setMove(char player, int location)
     {
         mGame.setMove(player, location);
-        mBoardButtons[location].setEnabled(false);
-        mBoardButtons[location].setText(String.valueOf(player));
+        chessboard[location].setEnabled(false);
+        chessboard[location].setText(String.valueOf(player));
         if (player == mGame.humanChar) {
-            mBoardButtons[location].setTextColor(Color.RED);
-//            mBoardButtons[location].setBackgroundColor(Color.GREEN);
+            chessboard[location].setTextColor(Color.RED);
+//            chessboard[location].setBackgroundColor(Color.GREEN);
         } else {
-            mBoardButtons[location].setTextColor(Color.BLUE);
-//            mBoardButtons[location].setBackgroundColor(Color.WHITE);
+            chessboard[location].setTextColor(Color.BLUE);
+//            chessboard[location].setBackgroundColor(Color.WHITE);
         }
     }
 }
