@@ -17,7 +17,7 @@ public class Project2_TicTacToeActivity extends Activity {
 
     private Button chessboard[];
 
-    private TextView mInfoTextView;
+    private TextView gameInfo;
     private TextView humanWinCountText;
     private TextView tieGamesCountText;
     private TextView computerWinCountText;
@@ -26,8 +26,8 @@ public class Project2_TicTacToeActivity extends Activity {
     private int tieGamesCount = 0;
     private int computerWinCount = 0;
 
-    private boolean mHumanFirst = true;
-    private boolean mGameOver = false;
+    private boolean isHumanFirst = true;
+    private boolean isGameOver = false;
 
     //Interface initialization
     public void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,7 @@ public class Project2_TicTacToeActivity extends Activity {
         chessboard[7] = (Button) findViewById(R.id.eight);
         chessboard[8] = (Button) findViewById(R.id.nine);
 
-        mInfoTextView = (TextView) findViewById(R.id.information);
+        gameInfo = (TextView) findViewById(R.id.information);
         humanWinCountText = (TextView) findViewById(R.id.humanCount);
         tieGamesCountText = (TextView) findViewById(R.id.tiesCount);
         computerWinCountText = (TextView) findViewById(R.id.androidCount);
@@ -96,20 +96,20 @@ public class Project2_TicTacToeActivity extends Activity {
             chessboard[i].setOnClickListener(new ButtonClickListener(i));
         }
 
-        if (mHumanFirst)
+        if (isHumanFirst)
         {
-            mInfoTextView.setText(R.string.first_human);
-            mHumanFirst = false;
+            gameInfo.setText(R.string.first_human);
+            isHumanFirst = false;
         }
         else
         {
-            mInfoTextView.setText(R.string.turn_computer);
+            gameInfo.setText(R.string.turn_computer);
             int move = mGame.getComputerMove();
             setMove(mGame.computerChar, move);
-            mHumanFirst = true;
+            isHumanFirst = true;
         }
 
-        mGameOver = false;
+        isGameOver = false;
     }
 
     //Button click handler
@@ -124,7 +124,7 @@ public class Project2_TicTacToeActivity extends Activity {
 
         public void onClick(View view)
         {
-            if (!mGameOver)
+            if (!isGameOver)
             {
                 if (chessboard[location].isEnabled())
                 {
@@ -135,7 +135,7 @@ public class Project2_TicTacToeActivity extends Activity {
                     //If the game is not finished yet, get player's next movement
                     if (winner == 0)
                     {
-                        mInfoTextView.setText(R.string.turn_computer);
+                        gameInfo.setText(R.string.turn_computer);
                         int move = mGame.getComputerMove();
                         setMove(mGame.computerChar, move);
                         winner = mGame.checkForWinner();
@@ -143,31 +143,31 @@ public class Project2_TicTacToeActivity extends Activity {
 
                     //If the game is not finished yet, switch player
                     if (winner == 0) {
-                        mInfoTextView.setText(R.string.turn_human);
+                        gameInfo.setText(R.string.turn_human);
                     }
                     //If the game is tie
                     else if (winner == 1)
                     {
-                        mInfoTextView.setText(R.string.result_tie);
+                        gameInfo.setText(R.string.result_tie);
                         tieGamesCount++;
                         tieGamesCountText.setText(Integer.toString(tieGamesCount));
-                        mGameOver = true;
+                        isGameOver = true;
                     }
                     //If human wins, update human score
                     else if (winner == 2)
                     {
-                        mInfoTextView.setText(R.string.result_human_wins);
+                        gameInfo.setText(R.string.result_human_wins);
                         humanWinCount++;
                         humanWinCountText.setText(Integer.toString(humanWinCount));
-                        mGameOver = true;
+                        isGameOver = true;
                     }
                     //If computer wins, update computer score
                     else
                     {
-                        mInfoTextView.setText(R.string.result_android_wins);
+                        gameInfo.setText(R.string.result_android_wins);
                         computerWinCount++;
                         computerWinCountText.setText(Integer.toString(computerWinCount));
-                        mGameOver = true;
+                        isGameOver = true;
                     }
                 }
             }

@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class Project2_TicTacToeGame {
 
-    private char mBoard[];
+    private char chessboardSymbol[];
     private final static int boardButtonNum = 9;
 
     public static final char humanChar = 'O';
@@ -20,10 +20,10 @@ public class Project2_TicTacToeGame {
     //Create new game structure
     public Project2_TicTacToeGame(){
 
-        mBoard = new char[boardButtonNum];
+        chessboardSymbol = new char[boardButtonNum];
 
         for (int i = 0; i < boardButtonNum; i++)
-            mBoard[i] = blankChar;
+            chessboardSymbol[i] = blankChar;
 
         mRand = new Random();
     }
@@ -33,14 +33,14 @@ public class Project2_TicTacToeGame {
     {
         for (int i = 0; i < boardButtonNum; i++)
         {
-            mBoard[i] = blankChar;
+            chessboardSymbol[i] = blankChar;
         }
     }
 
     //Set player movement
     public void setMove(char player, int location)
     {
-        mBoard[location] = player;
+        chessboardSymbol[location] = player;
     }
 
     //SetComputer movement
@@ -51,10 +51,10 @@ public class Project2_TicTacToeGame {
         for (int i = 0; i < boardButtonNum; i++)
         {
             //Check available button for movement
-            if (mBoard[i] != humanChar && mBoard[i] != computerChar)
+            if (chessboardSymbol[i] != humanChar && chessboardSymbol[i] != computerChar)
             {
-                char curr = mBoard[i];
-                mBoard[i] = computerChar;
+                char curr = chessboardSymbol[i];
+                chessboardSymbol[i] = computerChar;
                 //Get next movement button index if computer can win for the next step
                 if (checkForWinner() == 3)
                 {
@@ -62,17 +62,17 @@ public class Project2_TicTacToeGame {
                     return i;
                 }
                 else
-                    mBoard[i] = curr;
+                    chessboardSymbol[i] = curr;
             }
         }
 
         for (int i = 0; i < boardButtonNum; i++)
         {
             //Check available button for movement
-            if (mBoard[i] != humanChar && mBoard[i] != computerChar)
+            if (chessboardSymbol[i] != humanChar && chessboardSymbol[i] != computerChar)
             {
-                char curr = mBoard[i];
-                mBoard[i] = humanChar;
+                char curr = chessboardSymbol[i];
+                chessboardSymbol[i] = humanChar;
                 //Get next movement button index to prevent player win
                 //if player can win in the next step
                 if (checkForWinner() == 2)
@@ -81,7 +81,7 @@ public class Project2_TicTacToeGame {
                     return i;
                 }
                 else
-                    mBoard[i] = curr;
+                    chessboardSymbol[i] = curr;
             }
         }
 
@@ -90,7 +90,7 @@ public class Project2_TicTacToeGame {
         {
             //Set computer movement from board size
             move = mRand.nextInt(boardButtonNum);
-        } while (mBoard[move] == humanChar || mBoard[move] == computerChar);
+        } while (chessboardSymbol[move] == humanChar || chessboardSymbol[move] == computerChar);
 
         //Get a random index for next movement button
         setMove(computerChar, move);
@@ -103,14 +103,14 @@ public class Project2_TicTacToeGame {
         //Check horizontal letters are the same or not
         for (int i = 0; i <= 6; i += 3)
         {
-            if (mBoard[i] == humanChar &&
-                    mBoard[i+1] == humanChar &&
-                    mBoard[i+2] == humanChar)
+            if (chessboardSymbol[i] == humanChar &&
+                    chessboardSymbol[i+1] == humanChar &&
+                    chessboardSymbol[i+2] == humanChar)
                 //If human wins return 2
                 return 2;
-            if (mBoard[i] == computerChar &&
-                    mBoard[i+1] == computerChar &&
-                    mBoard[i+2] == computerChar)
+            if (chessboardSymbol[i] == computerChar &&
+                    chessboardSymbol[i+1] == computerChar &&
+                    chessboardSymbol[i+2] == computerChar)
                 //If computer wins return 3
                 return 3;
         }
@@ -118,38 +118,38 @@ public class Project2_TicTacToeGame {
         //Check vertical letters are the same or not
         for (int i = 0; i <= 2; i++)
         {
-            if (mBoard[i] == humanChar &&
-                    mBoard[i+3] == humanChar &&
-                    mBoard[i+6] == humanChar)
+            if (chessboardSymbol[i] == humanChar &&
+                    chessboardSymbol[i+3] == humanChar &&
+                    chessboardSymbol[i+6] == humanChar)
                 return 2;
-            if (mBoard[i] == computerChar &&
-                    mBoard[i+3] == computerChar &&
-                    mBoard[i+6] == computerChar)
+            if (chessboardSymbol[i] == computerChar &&
+                    chessboardSymbol[i+3] == computerChar &&
+                    chessboardSymbol[i+6] == computerChar)
                 return 3;
         }
 
         //Check diagonal letters are the same or not
-        if ((   mBoard[0] == humanChar &&
-                mBoard[4] == humanChar &&
-                mBoard[8] == humanChar)
+        if ((   chessboardSymbol[0] == humanChar &&
+                chessboardSymbol[4] == humanChar &&
+                chessboardSymbol[8] == humanChar)
                 ||
-                (mBoard[2] == humanChar &&
-                 mBoard[4] == humanChar &&
-                 mBoard[6] == humanChar) )
+                (chessboardSymbol[2] == humanChar &&
+                 chessboardSymbol[4] == humanChar &&
+                 chessboardSymbol[6] == humanChar) )
             return 2;
-        if ((   mBoard[0] == computerChar &&
-                mBoard[4] == computerChar &&
-                mBoard[8] == computerChar)
+        if ((   chessboardSymbol[0] == computerChar &&
+                chessboardSymbol[4] == computerChar &&
+                chessboardSymbol[8] == computerChar)
                 ||
-                (mBoard[2] == computerChar &&
-                 mBoard[4] == computerChar &&
-                 mBoard[6] == computerChar) )
+                (chessboardSymbol[2] == computerChar &&
+                 chessboardSymbol[4] == computerChar &&
+                 chessboardSymbol[6] == computerChar) )
             return 3;
 
         //If no winner, check the game is finished or not, if not return 0
         for (int i = 0; i < boardButtonNum; i++)
         {
-            if (mBoard[i] != humanChar && mBoard[i] != computerChar) {
+            if (chessboardSymbol[i] != humanChar && chessboardSymbol[i] != computerChar) {
                 return 0;
             }
         }
