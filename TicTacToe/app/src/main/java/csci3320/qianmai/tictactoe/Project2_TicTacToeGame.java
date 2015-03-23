@@ -11,8 +11,8 @@ public class Project2_TicTacToeGame {
     private char chessboardSymbol[];
     private final static int boardButtonNum = 9;
 
-    public static final char humanChar = 'O';
-    public static final char computerChar = 'X';
+    public static final char humanChar = 'X';
+    public static final char computerChar = 'O';
     public static final char blankChar = ' ';
 
     private Random mRand;
