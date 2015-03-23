@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.TableRow;
+import android.widget.TableLayout;
 
 //Create Project2_TicTacToeActivity under the Activity
 public class Project2_TicTacToeActivity extends Activity {
@@ -28,8 +30,13 @@ public class Project2_TicTacToeActivity extends Activity {
 
     private boolean isHumanFirst = true;
     private boolean isGameOver = false;
+    private boolean quitGame = false;
+
+    private TableRow finalScore;
+    private TableLayout palyArea;
 
     //Interface initialization
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -54,12 +61,16 @@ public class Project2_TicTacToeActivity extends Activity {
         tieGamesCountText.setText(Integer.toString(tieGamesCount));
         computerWinCountText.setText(Integer.toString(computerWinCount));
 
+        finalScore = (TableRow) findViewById(R.id.tableRow);
+        palyArea = (TableLayout) findViewById(R.id.playArea);
+
         mGame = new Project2_TicTacToeGame();
 
         startNewGame();
     }
 
     //Create menu options
+    @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
         MenuInflater inflater = getMenuInflater();
@@ -68,7 +79,17 @@ public class Project2_TicTacToeActivity extends Activity {
         return true;
     }
 
+    //Update menu options
+    @Override
+    public boolean onPrepareOptionsMenu (Menu menu){
+        if(quitGame) {
+            menu.getItem(0).setEnabled(false);
+        }
+        return true;
+    }
+
     //Define menu options details
+    @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
         switch(item.getItemId())
@@ -77,7 +98,7 @@ public class Project2_TicTacToeActivity extends Activity {
                 startNewGame();
                 break;
             case R.id.finalScore:
-                showFinalScore();
+                finalScore();
                 break;
             case R.id.exitGame:
                 Project2_TicTacToeActivity.this.finish();
@@ -95,6 +116,7 @@ public class Project2_TicTacToeActivity extends Activity {
         for (int i = 0; i < chessboard.length; i++)
         {
             chessboard[i].setText("");
+            chessboard[i].setBackgroundResource(R.drawable.buttonshape);
             chessboard[i].setEnabled(true);
             chessboard[i].setOnClickListener(new ButtonClickListener(i));
         }
@@ -116,10 +138,14 @@ public class Project2_TicTacToeActivity extends Activity {
     }
 
     //Show final score
-    private void showFinalScore()
+    private void finalScore()
     {
-        
+        finalScore.setVisibility(View.VISIBLE);
+        palyArea.setVisibility(View.INVISIBLE);
+        gameInfo.setText(R.string.gameOver);
+        quitGame = true;
     }
+
     //Button click handler
     private class ButtonClickListener implements View.OnClickListener
     {

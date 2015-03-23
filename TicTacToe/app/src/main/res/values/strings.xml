@@ -3,7 +3,8 @@
     <string name="app_name">Project2_TicTacToe</string>
     <string name="first_human">You first.</string>
     <string name="turn_human">Your turn.</string>
-    <string name="turn_computer">Computer\'s turn.</string>
+    <!--<string name="turn_computer">Computer\'s turn.</string>-->
+    <string name="turn_computer">Computer first</string>
     <string name="result_tie">Tie</string>
     <string name="result_human_wins">You Win!</string>
     <string name="result_android_wins">Computer Wins!</string>
@@ -20,6 +21,7 @@
     <string name="human">You: </string>
     <string name="ties">Ties: </string>
     <string name="android">Computer: </string>
+    <string name="gameOver">Game Over</string>
     <string name="contact_heading">Contact Info</string>
   <string name="contact_info">
   </string>
@@ -31,6 +33,6 @@
       vertically, or diagonally, that player wins the game.
   </string>
     <string name="newGame_label">New Game</string>
-    <string name="finalScore_label">Quit</string>
+    <string name="finalScore_label">Final Score</string>
     <string name="exitGame_label">Quit</string>
 </resources>  

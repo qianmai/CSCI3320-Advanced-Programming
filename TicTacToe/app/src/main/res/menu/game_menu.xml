@@ -4,4 +4,4 @@
     <item android:id="@+id/finalScore" android:title="@string/finalScore_label"></item>
     <!--<item android:id="@+id/gameRule" android:title="@string/game_rule" android:icon="@android:drawable/ic_menu_close_clear_cancel"></item>-->
     <item android:id="@+id/exitGame" android:title="@string/exitGame_label" android:icon="@android:drawable/ic_menu_close_clear_cancel"></item>
-</menu> 
+</menu>
